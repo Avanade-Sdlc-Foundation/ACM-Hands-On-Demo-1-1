@@ -6,41 +6,36 @@
 ## 手順
 1. **ウェブサイトの探索**: 上記の URL にアクセスし、Smart Bookmarks ウェブサイトを探索してください。利用可能な機能、ユーザーインターフェイスの要素、およびユーザーがどのように操作するかを理解してください。
 2. **機能の特定**: ウェブサイトの主要な機能を特定してください。例えば、ブックマークの追加、編集、削除、検索機能などがあります。
-3. **テストケースの生成**: 各機能に対して、CopilotChatに以下のプロンプトを書いてあげます。
->プロンプト例:  
+3. **テストケースの生成**: 各機能に対して、CopilotChat に以下のプロンプトを書いてあげます。
+
+>プロンプト例:
 ```
-https://ravi-cheetiralaav.github.io/smart-bookmarksのカテゴリによる表示内容切り替え機能のE2Eテストケースを生成してください。
+https://ravi-cheetiralaav.github.io/smart-bookmarks のカテゴリによる表示内容切り替え機能について、Playwright（TypeScript）の E2E テストコードを生成してください。
+- テストは `tests/category-filter.spec.ts` に作成する想定でお願いします。
+- ロケーターはユーザー向けの role ベース（`getByRole` / `getByLabel` / `getByText` など）を優先してください。
+- 操作は `test.step()` で目的ごとにグルーピングしてください。
+- アサーションは auto-retrying な web-first assertion（例: `await expect(locator).toHaveText()`）を使ってください。
+- ハードコード待機（`waitForTimeout` など）は避けてください。
 ```
 
-4. **回答の確認**: CopilotChatが生成したテストケースを確認し、必要に応じて修正や追加を行ってください。
->回答例:
-```
-## カテゴリによる表示内容切り替え機能のE2Eテストケース
+4. **回答の確認**: CopilotChat が生成したテストコードを確認し、必要に応じて修正や追加を行ってください。
 
-### テストケース1: 初期表示で全カテゴリが選択されていることを確認
-1. Smart Bookmarks サイトにアクセスする
-2. 「All」カテゴリが選択されていることを確認する
-3. すべてのブックマークが表示されていることを確認する
+>回答例（イメージ）:
+```typescript
+import { test, expect } from '@playwright/test';
 
-### テストケース2: 特定カテゴリを選択したときの表示切り替え
-1. 任意のカテゴリ（例:「Work」）をクリックする
-2. 「Work」カテゴリがアクティブになっていることを確認する
-3. 「Work」カテゴリに属するブックマークのみが表示されていることを確認する
-4. 他のカテゴリのブックマークが表示されていないことを確認する
+test.describe('Category Filter - Switch displayed bookmarks by category', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('https://ravi-cheetiralaav.github.io/smart-bookmarks');
+  });
 
-### テストケース3: カテゴリ切り替え後に「All」に戻す
-1. 任意のカテゴリ（例:「Personal」）をクリックする
-2. 「Personal」カテゴリのブックマークのみが表示されていることを確認する
-3. 「All」カテゴリをクリックする
-4. すべてのブックマークが再度表示されることを確認する
+  test('Category Filter - switching category updates the bookmark list', async ({ page }) => {
+    await test.step('Confirm initial category and list', async () => {
+      // ...
+    });
 
-### テストケース4: カテゴリが空の場合の表示
-1. ブックマークが存在しないカテゴリ（例:「Travel」）をクリックする
-2. 「Travel」カテゴリがアクティブになっていることを確認する
-3. 「No bookmarks found」など、該当するブックマークがない旨のメッセージが表示されることを確認する
-
-### テストケース5: カテゴリ選択状態のUI確認
-1. 任意のカテゴリをクリックする
-2. 選択したカテゴリのボタンやタブがハイライトされていることを確認する
-3. 他のカテゴリは非アクティブ状態であることを確認する
-```
+    await test.step('Switch category and verify filtered result', async () => {
+      // ...
+    });
+  });
+});

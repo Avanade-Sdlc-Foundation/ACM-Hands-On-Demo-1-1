@@ -1,37 +1,37 @@
 ---
-description: 'Playwright test generation instructions'
+description: 'Playwright テスト生成指示'
 applyTo: '**'
 ---
 
-## Test Writing Guidelines
+## テスト作成ガイドライン
 
-### Code Quality Standards
-- **Locators**: Prioritize user-facing, role-based locators (`getByRole`, `getByLabel`, `getByText`, etc.) for resilience and accessibility. Use `test.step()` to group interactions and improve test readability and reporting.
-- **Assertions**: Use auto-retrying web-first assertions. These assertions start with the `await` keyword (e.g., `await expect(locator).toHaveText()`). Avoid `expect(locator).toBeVisible()` unless specifically testing for visibility changes.
-- **Timeouts**: Rely on Playwright's built-in auto-waiting mechanisms. Avoid hard-coded waits or increased default timeouts.
-- **Clarity**: Use descriptive test and step titles that clearly state the intent. Add comments only to explain complex logic or non-obvious interactions.
-
-
-### Test Structure
-- **Imports**: Start with `import { test, expect } from '@playwright/test';`.
-- **Organization**: Group related tests for a feature under a `test.describe()` block.
-- **Hooks**: Use `beforeEach` for setup actions common to all tests in a `describe` block (e.g., navigating to a page).
-- **Titles**: Follow a clear naming convention, such as `Feature - Specific action or scenario`.
+### コード品質基準
+- **ロケーター**: 耐久性とアクセシビリティのため、ユーザー向けで role ベースのロケーター（`getByRole`、`getByLabel`、`getByText` など）を優先してください。`test.step()` を使って操作をグルーピングし、テストの可読性とレポート性を向上させてください。
+- **アサーション**: 自動リトライされる web-first アサーションを使用してください。これらのアサーションは `await` で始まります（例: `await expect(locator).toHaveText()`）。可視性の変化を特にテストする場合を除き、`expect(locator).toBeVisible()` は避けてください。
+- **タイムアウト**: Playwright の組み込み auto-wait を活用してください。ハードコードした wait や、デフォルトタイムアウトの増加は避けてください。
+- **明確さ**: 意図が明確に伝わる、説明的なテスト名・ステップ名を使用してください。コメントは、複雑なロジックや直感的でない操作を説明する必要がある場合にのみ追加してください。
 
 
-### File Organization
-- **Location**: Store all test files in the `tests/` directory.
-- **Naming**: Use the convention `<feature-or-page>.spec.ts` (e.g., `login.spec.ts`, `search.spec.ts`).
-- **Scope**: Aim for one test file per major application feature or page.
-
-### Assertion Best Practices
-- **UI Structure**: Use `toMatchAriaSnapshot` to verify the accessibility tree structure of a component. This provides a comprehensive and accessible snapshot.
-- **Element Counts**: Use `toHaveCount` to assert the number of elements found by a locator.
-- **Text Content**: Use `toHaveText` for exact text matches and `toContainText` for partial matches.
-- **Navigation**: Use `toHaveURL` to verify the page URL after an action.
+### テスト構成
+- **Imports**: `import { test, expect } from '@playwright/test';` から始めてください。
+- **Organization**: 機能に関連するテストは `test.describe()` ブロック配下にまとめてください。
+- **Hooks**: `describe` ブロック内のすべてのテストで共通のセットアップ（例: ページ遷移）は `beforeEach` を使用してください。
+- **Titles**: `Feature - Specific action or scenario` のような明確な命名規則に従ってください。
 
 
-## Example Test Structure
+### ファイル構成
+- **Location**: すべてのテストファイルは `tests/` ディレクトリに格納してください。
+- **Naming**: `<feature-or-page>.spec.ts` の規則に従ってください（例: `login.spec.ts`、`search.spec.ts`）。
+- **Scope**: 主要なアプリ機能またはページごとに、テストファイルは 1 つを目安にしてください。
+
+### アサーションのベストプラクティス
+- **UI 構造**: コンポーネントのアクセシビリティツリー構造を検証するには `toMatchAriaSnapshot` を使用してください。これは包括的でアクセシブルなスナップショットを提供します。
+- **要素数**: ロケーターで見つかった要素数の検証には `toHaveCount` を使用してください。
+- **テキスト内容**: 完全一致は `toHaveText`、部分一致は `toContainText` を使用してください。
+- **ナビゲーション**: 操作後のページ URL を検証するには `toHaveURL` を使用してください。
+
+
+## テスト構成例
 
 ```typescript
 import { test, expect } from '@playwright/test';
@@ -68,19 +68,19 @@ test.describe('Movie Search Feature', () => {
 });
 ```
 
-## Test Execution Strategy
+## テスト実行戦略
 
-1. **Initial Run**: Execute tests with `npx playwright test --project=chromium`
-2. **Debug Failures**: Analyze test failures and identify root causes
-3. **Iterate**: Refine locators, assertions, or test logic as needed
-4. **Validate**: Ensure tests pass consistently and cover the intended functionality
-5. **Report**: Provide feedback on test results and any issues discovered
+1. **初回実行**: `npx playwright test --project=chromium` でテストを実行
+2. **失敗のデバッグ**: テスト失敗を分析し、根本原因を特定
+3. **反復**: ロケーター、アサーション、テストロジックを必要に応じて改善
+4. **検証**: テストが安定して合格し、意図した機能をカバーしていることを確認
+5. **報告**: 実行結果と発見した問題点をフィードバック
 
-## Quality Checklist
+## 品質チェックリスト
 
-Before finalizing tests, ensure:
-- [ ] All locators are accessible and specific and avoid strict mode violations
-- [ ] Tests are grouped logically and follow a clear structure
-- [ ] Assertions are meaningful and reflect user expectations
-- [ ] Tests follow consistent naming conventions
-- [ ] Code is properly formatted and commented
+最終化前に以下を確認:
+- [ ] すべてのロケーターがアクセシブルで十分に具体的であり、strict mode 違反を避けている
+- [ ] テストが論理的にグルーピングされ、明確な構成に従っている
+- [ ] アサーションが意味のあるもので、ユーザー期待に沿っている
+- [ ] テスト命名規則が一貫している
+- [ ] コードが適切に整形され、必要な場合のみコメントが付与されている
