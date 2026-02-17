@@ -36,32 +36,32 @@ applyTo: '**'
 ```typescript
 import { test, expect } from '@playwright/test';
 
-test.describe('Movie Search Feature', () => {
+test.describe('映画検索機能', () => {
   test.beforeEach(async ({ page }) => {
-    // Navigate to the application before each test
+    // 各テスト前にアプリケーションに遷移
     await page.goto('https://debs-obrien.github.io/playwright-movies-app');
   });
 
-  test('Search for a movie by title', async ({ page }) => {
-    await test.step('Activate and perform search', async () => {
+  test('タイトルで映画を検索', async ({ page }) => {
+    await test.step('検索の実行', async () => {
       await page.getByRole('search').click();
-      const searchInput = page.getByRole('textbox', { name: 'Search Input' });
+      const searchInput = page.getByRole('textbox', { name: '検索入力' });
       await searchInput.fill('Garfield');
       await searchInput.press('Enter');
     });
 
-    await test.step('Verify search results', async () => {
-      // Verify the accessibility tree of the search results
+    await test.step('検索結果の検証', async () => {
+      // 検索結果のアクセシビリティツリーを検証
       await expect(page.getByRole('main')).toMatchAriaSnapshot(`
         - main:
           - heading "Garfield" [level=1]
-          - heading "search results" [level=2]
-          - list "movies":
-            - listitem "movie":
-              - link "poster of The Garfield Movie The Garfield Movie rating":
+          - heading "検索結果" [level=2]
+          - list "映画一覧":
+            - listitem "映画":
+              - link "ザ・ガーフィールド・ムービーのポスター ザ・ガーフィールド・ムービー 評価":
                 - /url: /playwright-movies-app/movie?id=tt5779228&page=1
-                - img "poster of The Garfield Movie"
-                - heading "The Garfield Movie" [level=2]
+                - img "ザ・ガーフィールド・ムービーのポスター"
+                - heading "ザ・ガーフィールド・ムービー" [level=2]
       `);
     });
   });
