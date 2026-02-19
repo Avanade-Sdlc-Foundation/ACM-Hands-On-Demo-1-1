@@ -73,9 +73,9 @@ https://ravi-cheetiralaav.github.io/smart-bookmarks のカテゴリによる表示内容切り
   });
 ```
 
-## デモのゴール
+## Hands-onのゴール
 
-このHands-onデモを完了し、以下のスキルの体感をしていただきました。
+このHands-onを完了し、以下のスキルの体感をしていただきました。
 
 - **GitHub Copilot Chatの活用**: 適切なプロンプトを書いてE2Eテストコードを生成してもらう
 - **Custom指示の理解**: プロジェクト固有のテスト作成ルール（playwright-typescript.instructions.md）に従ったコード生成
