@@ -15,9 +15,39 @@ E2EƒeƒXƒg‚ÌŽÀ‘•‚ÉŽæ‚èŠ|‚©‚é‘O‚ÉAŠJ”­ƒ`[ƒ€‚Ì•W€ŠÂ‹«‚ð\’z‚µ‚Ü‚·B“KØ‚ÈŠÂ‹«Ý’
 
 1. **Windows PowerShell**: ŠÇ—ŽÒŒ ŒÀ‚ÅŽÀs‰Â”\‚Å‚ ‚é‚±‚Æ
 2. **Git**: ƒo[ƒWƒ‡ƒ“ŠÇ—ƒVƒXƒeƒ€‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚±‚Æ
-3. **Visual Studio Code**: ÅV”Å‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚±‚Æ
-4. **GitHub Copilot**: VS CodeŠg’£‹@”\‚ª—LŒø‰»‚³‚ê‚Ä‚¢‚é‚±‚Æ
-5. **ƒuƒ‰ƒEƒU**: ChromeAEdgeAFirefox‚Ì‚¢‚¸‚ê‚©‚ª—˜—p‰Â”\‚Å‚ ‚é‚±‚Æ
+3. **Node.js**: ƒo[ƒWƒ‡ƒ“16ˆÈã‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚±‚Æ (`node --version` ‚ÅŠm”F)
+4. **npm**: ƒpƒbƒP[ƒWƒ}ƒl[ƒWƒƒ[‚ª—˜—p‰Â”\‚Å‚ ‚é‚±‚Æ (`npm --version` ‚ÅŠm”F)
+5. **Visual Studio Code**: ÅV”Å‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚±‚Æ
+6. **GitHub Copilot**: VS CodeŠg’£‹@”\‚ª—LŒø‰»‚³‚ê‚Ä‚¢‚é‚±‚Æ
+7. **ƒuƒ‰ƒEƒU**: ChromeAEdgeAFirefox‚Ì‚¢‚¸‚ê‚©‚ª—˜—p‰Â”\‚Å‚ ‚é‚±‚Æ
+
+<details>
+<summary><strong>? Node.js‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÌƒCƒ“ƒXƒg[ƒ‹Žè‡</strong></summary>
+
+### Windows‚Å‚ÌNode.jsƒCƒ“ƒXƒg[ƒ‹
+
+1. **ŒöŽ®ƒTƒCƒg‚©‚çƒ_ƒEƒ“ƒ[ƒh**:
+   - https://nodejs.org/ ‚ÉƒAƒNƒZƒX
+   - **LTS”Å**i„§j‚ðƒNƒŠƒbƒN‚µ‚Äƒ_ƒEƒ“ƒ[ƒh
+
+2. **ƒCƒ“ƒXƒg[ƒ‰[‚ÌŽÀs**:
+   - ƒ_ƒEƒ“ƒ[ƒh‚µ‚½`.msi`ƒtƒ@ƒCƒ‹‚ðŽÀs
+   - ƒCƒ“ƒXƒg[ƒ‹ƒEƒBƒU[ƒh‚É]‚Á‚ÄƒCƒ“ƒXƒg[ƒ‹
+   - **ƒfƒtƒHƒ‹ƒgÝ’è‚ÅOK**
+
+3. **ƒCƒ“ƒXƒg[ƒ‹‚ÌŠm”F**:
+   ```powershell
+   # PowerShell‚ðV‚½‚É‹N“®‚µ‚ÄŽÀs
+   node --version
+   npm --version
+   ```
+   - Node.js v16.0.0ˆÈãAnpm 7.0.0ˆÈã‚ª•\Ž¦‚³‚ê‚é‚±‚Æ‚ðŠm”F
+
+4. **ƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO**:
+   - ƒRƒ}ƒ“ƒh‚ª”FŽ¯‚³‚ê‚È‚¢ê‡‚ÍAPC‚ðÄ‹N“®
+   - ŠÂ‹«•Ï”PATH‚ÉNode.js‚ÌƒpƒX‚ª’Ç‰Á‚³‚ê‚Ä‚¢‚é‚©Šm”F
+
+</details>
 
 ## ? •K{ 2. GitHub Copilot‚Ì€”õ
 
@@ -45,7 +75,7 @@ GitHub Copilot‚ª³í‚É“®ì‚·‚é‚±‚Æ‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢F
 4. **Web‹ZpŠî‘b**: HTMLACSSAJavaScript‚ÌŠî–{ŠT”O
 
 
-## ?? ƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO
+## ? ƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO
 
 ### GitHub Copilot‚ª“®ì‚µ‚È‚¢ê‡
 

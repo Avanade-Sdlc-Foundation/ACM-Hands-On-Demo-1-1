@@ -51,7 +51,7 @@ VS Code環境でGitHub Copilot Chatを有効化し、テストコード生成に備えます。
      - Playwright設定ファイルの参照設定
 
 3. **プロンプト送信と初回回答の受信**:
-   - Enterキーまたは送信ボタンでプロンプトを送信
+   - Enterキーを押してプロンプトを送信
    - Copilot Chatが回答を生成するまで待機
    - 生成されたテストコードの全体構造を確認
 
@@ -115,7 +115,7 @@ Copilot Chatが生成したコードの品質と適合性を評価します。
 
 
 
-## ?? トラブルシューティング
+## ? トラブルシューティング
 
 ### Copilot Chatが応答しない場合
 
@@ -144,7 +144,7 @@ Copilot Chatが生成したコードの品質と適合性を評価します。
    ```powershell
    # package.jsonの確認
    Get-Content package.json
-   # 必要に応じてPlaywrightのインストール
+   # @playwright/testがpackage.jsonにない場合、以下のコマンドでインストール
    npm install @playwright/test
    ```
 

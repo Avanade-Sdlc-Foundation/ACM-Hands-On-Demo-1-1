@@ -77,10 +77,34 @@ JP-translationブランチをベースとした新しい作業ブランチを作成します。
    # 現在のブランチが feature/e2e-test-creation になっていることを確認
    ```
 
-## ? 必須 3. VS Codeでプロジェクトを開く
+## ? 必須 3. プロジェクト初期化
+
+Playwrightテスト環境のための初期セットアップを行います。
+
+1. **package.jsonの初期化**:
+   ```powershell
+   # Node.jsプロジェクトとして初期化
+   npm init -y
+   ```
+
+2. **Playwrightの依存関係追加**:
+   ```powershell
+   # Playwrightテストフレームワークをインストール
+   npm install --save-dev @playwright/test
+   ```
+
+3. **インストール確認**:
+   ```powershell
+   # package.jsonでPlaywrightの追加を確認
+   Get-Content package.json
+   ```
+
+## ? 必須 4. VS Codeでプロジェクトを開く
 
 開発環境としてVS Codeでプロジェクトを立ち上げます。
 
+1. **VS Codeの起動**:
+   - スタートメニューから「Visual Studio Code」を起動
 
 2. **フォルダーを開く操作**:
    - VS Codeのメニューから「File」→「Open Folder」を選択
@@ -93,7 +117,7 @@ JP-translationブランチをベースとした新しい作業ブランチを作成します。
    - 「フォルダーの選択」ボタンをクリック
    ![alt text](./images/choice-Openfolder.png)
 
-## ? 参考 4. VS Code拡張機能の確認
+## ? 参考 5. VS Code拡張機能の確認
 
 効率的な開発のために必要な拡張機能を確認します。
 
@@ -110,7 +134,7 @@ JP-translationブランチをベースとした新しい作業ブランチを作成します。
    - VS Codeの内蔵TypeScriptサポートが有効であることを確認
 
 
-## ?? トラブルシューティング
+## ? トラブルシューティング
 
 ### Git関連のエラー
 
@@ -157,6 +181,7 @@ JP-translationブランチをベースとした新しい作業ブランチを作成します。
 
 - **リポジトリクローン**: GitHub上のプロジェクトをローカル環境に取得
 - **ブランチ管理**: JP-translationベースの新しい作業ブランチを作成
+- **プロジェクト初期化**: Node.jsプロジェクトとPlaywright環境のセットアップ
 - **VS Code環境**: 効率的な開発のためのIDE設定完了
 
 次のステップでは、GitHub Copilot Chatを活用して実際のE2Eテストコードを生成し、プロジェクトの品質基準に従ったテスト実装を行います。
