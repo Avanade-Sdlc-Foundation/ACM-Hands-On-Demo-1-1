@@ -1,105 +1,101 @@
-# 演習 0: 前提条件と環境設定
+# 演習 0: 環境の準備と設定
 
 | | [次の手順: ウェブサイトの探索と機能理解 →][next-lesson] |
 |:--|--:|
 
-この演習を開始する前に、必要な環境とツールが準備されていることを確認しましょう。
+この演習を開始する前に、必要なソフトウェアやツールが準備されていることを確認しましょう。
 
 ## シナリオ
 
-E2Eテストの実装に取り掛かる前に、開発チームの標準環境を構築します。適切な環境設定により、チーム全体で一貫したテスト開発プロセスを実現できます。
+ウェブサイトのテスト作成に取り掛かる前に、作業に必要なソフトウェアやツールを準備します。適切な環境設定により、スムーズにテスト作成作業を進めることができます。
 
-## ? 必須 1. 開発環境の確認
+## ? 必須 1. 作業環境の確認
 
-以下の環境とツールが利用可能であることを確認してください：
+以下のソフトウェアとツールが使えることを確認してください：
 
-1. **Windows PowerShell**: 管理者権限で実行可能であること
-2. **Git**: バージョン管理システムがインストールされていること
-3. **Node.js**: バージョン16以上がインストールされていること (`node --version` で確認)
-4. **npm**: パッケージマネージャーが利用可能であること (`npm --version` で確認)
-5. **Visual Studio Code**: 最新版がインストールされていること
-6. **GitHub Copilot**: VS Code拡張機能が有効化されていること
-7. **ブラウザ**: Chrome、Edge、Firefoxのいずれかが利用可能であること
+1. **Windows PowerShell**: コマンド実行用（管理者権限で実行可能）
+2. **Git**: バージョン管理システム（インストール済み）
+3. **Node.js**: JavaScript実行環境（バージョン 16 以上）
+4. **Visual Studio Code**: コードエディター（GitHub Copilot拡張機能有効）
+5. **ブラウザ**: Chrome、Edge、Firefoxのいずれか
+
+**バージョン確認コマンド**:
+```powershell
+node --version
+npm --version
+```
 
 <details>
-<summary><strong>? Node.jsがインストールされていない場合のインストール手順</strong></summary>
+<summary><strong>? Node.jsが未インストールの場合</strong></summary>
 
-### WindowsでのNode.jsインストール
-
-1. **公式サイトからダウンロード**:
-   - https://nodejs.org/ にアクセス
-   - **LTS版**（推奨）をクリックしてダウンロード
-
-2. **インストーラーの実行**:
-   - ダウンロードした`.msi`ファイルを実行
-   - インストールウィザードに従ってインストール
-   - **デフォルト設定でOK**
-
-3. **インストールの確認**:
-   ```powershell
-   # PowerShellを新たに起動して実行
-   node --version
-   npm --version
-   ```
-   - Node.js v16.0.0以上、npm 7.0.0以上が表示されることを確認
-
-4. **トラブルシューティング**:
-   - コマンドが認識されない場合は、PCを再起動
-   - 環境変数PATHにNode.jsのパスが追加されているか確認
+1. [Node.js公式サイト](https://nodejs.org/) からLTS版をダウンロード
+2. ダウンロードした`.msi`ファイルを実行してインストール
+3. PowerShellを再起動してバージョン確認
 
 </details>
 
-## ? 必須 2. GitHub Copilotの準備
 
-GitHub Copilotが正常に動作することを確認してください：
+## ? 必須 2. プロジェクトのセットアップ
 
-1. **ライセンス確認**: GitHub Copilotのサブスクリプションが有効であること
-2. **VS Code拡張機能**: 「GitHub Copilot」および「GitHub Copilot Chat」がインストール・有効化されていること
-3. **認証状態**: GitHubアカウントにサインインしていること
+演習用ファイルをダウンロードし、作業環境を準備します。
 
-## ? 必須 3. ネットワークアクセスの確認
+**PowerShellを管理者権限で起動し、以下のコマンドを順番に実行してください**:
 
-以下のリソースにアクセス可能であることを確認してください：
+```powershell
+# 作業用フォルダを作成・移動（お好きな場所を指定してください）
+# 例: C:\work、C:\Users\YourName\Desktop、D:\projects など
+New-Item -ItemType Directory -Force -Path C:\work
+cd C:\work
 
-1. **テスト対象サイト**: https://ravi-cheetiralaav.github.io/smart-bookmarks
-2. **GitHub リポジトリ**: https://github.com/Avanade-Sdlc-Foundation/ACM-Hands-On-Demo-1-1.git
-3. **インターネット接続**: 画像やリソースの読み込みが正常に行われること
+# プロジェクトをクローン（講師から提供されたURLを使用してください）
+git clone <講師提供のリポジトリURL>
+cd ACM-Hands-On-Demo-1-1
 
-## ? 参考 4. 基礎知識の確認
+# 作業用ブランチを作成
+git checkout JP-translation
+git pull origin JP-translation
+git checkout -b feature/e2e-test-creation
 
-以下の知識があると演習がスムーズに進行します：
+# Node.jsプロジェクトを初期化
+npm init -y
 
-1. **Git基本操作**: clone、branch、checkout、pullコマンドの理解
-2. **PowerShell基本操作**: コマンド実行、ディレクトリ操作の基礎知識
-3. **VS Code基本操作**: ファイル操作、拡張機能の使用方法
-4. **Web技術基礎**: HTML、CSS、JavaScriptの基本概念
+# Playwrightをインストール
+npm install --save-dev @playwright/test
+```
 
+**VS Codeでプロジェクトを開く**:
+- VS Codeの「ファイル」→「フォルダーを開く」
+- `C:\work\ACM-Hands-On-Demo-1-1` を選択
 
-## ? トラブルシューティング
+## ? 必須 3. 動作確認
 
-### GitHub Copilotが動作しない場合
+以下を確認して、セットアップが正しく完了したことを確認してください：
 
-1. **ライセンスの確認**: GitHub設定でCopilotサブスクリプションの状態を確認
-2. **再認証**: VS CodeでGitHubアカウントからサインアウト後、再度サインイン
-3. **拡張機能の再有効化**: GitHub Copilot拡張機能を無効化後、再度有効化
+**? 確認項目**:
+- [ ] VS Codeで `ACM-Hands-On-Demo-1-1` フォルダーが開いている
+- [ ] `package.json` ファイルが作成されている
+- [ ] GitHub Copilot拡張機能が有効（VS Code右下にCopilotアイコン表示）
+- [ ] ブランチが `feature/e2e-test-creation` になっている
 
-### ネットワークアクセスの問題
+## ?? トラブルシューティング
 
-1. **プロキシ設定**: 企業環境ではIT部門にプロキシ設定を確認
-2. **ファイアウォール**: セキュリティソフトがアクセスをブロックしていないか確認
-3. **代替ネットワーク**: 可能であれば別のネットワーク環境で試行
+**よくあるエラーと解決方法**:
 
-### PowerShell実行ポリシーエラー
+| エラー | 解決方法 |
+|--------|----------|
+| `git` コマンドが認識されない | Gitをインストールし、PowerShellを再起動 |
+| `node` コマンドが認識されない | Node.jsをインストールし、PCを再起動 |
+| Copilotが動作しない | VS CodeでGitHubアカウントに再ログイン |
+| PowerShell実行ポリシーエラー | `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` を実行 |
 
-1. **実行ポリシーの確認**: `Get-ExecutionPolicy` で現在の設定を確認
-2. **一時的な変更**: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
-3. **管理者権限**: PowerShellを管理者として実行
+**詳細なサポート**:
+- 問題が解決しない場合は、講師またはサポートスタッフにお声がけください
 
 ## まとめと次のステップ
 
-環境準備が完了しました。次のステップでは、テスト対象となるSmart Bookmarksウェブサイトを詳しく探索し、テストすべき機能を特定します。
+環境準備が完了しました。次のステップでは、Smart Bookmarksウェブサイトを詳しく探索して、AIアシスタントでテストする機能を特定します。
 
-実際のウェブサイトを操作することで、ユーザーの視点からアプリケーションの動作を理解し、効果的なテストケースを設計する基盤を築きます。
+実際にウェブサイトを操作することで、利用者の視点からサイトの動きを理解し、AIプロンプト作成の基礎を作ります。
 
 ## リソース
 
